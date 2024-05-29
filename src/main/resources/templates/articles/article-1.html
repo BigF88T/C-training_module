@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+<header class="header" id="header">
+    <a th:href="@{/}" class="logo">
+        <img src="/img/logo.png" alt="C++">
+    </a>
+    <div class="links">
+        <a th:href="@{/articles/index}" class="link">Учебные материалы</a>
+        <a th:href="@{/training_module}" class="link">Тренажер</a>
+        <a th:href="@{/about}" class="link">О нас</a>
+    </div>
+</header>
+<div class="article__info">
+    <h1 class="article__heading_xl">
+        <span>1.1</span>
+        Первая программа: "Hello world!"
+    </h1>
+    <div class="article__content">
+        <p>
+            В этом параграфе мы напишем первую программу на C++.
+        </p>
+        <h2 class="article__heading_l">
+            Функция
+            <code>main</code>
+        </h2>
+            <p>
+                Пожалуй, самая простая и короткая программа на C++ — это программа, которая ничего не делает. Она выглядит так:
+            </p>
+
+            <pre class="hscd"><code><table class="table-code">
+                        <tbody>
+                            <tr class="tr">
+                                <td class="table-num table-code-num">1</td>
+                                <td class="table-cont table-code-cont">int main() {</td>
+                            </tr>
+                            <tr>
+                                <td class="table-num table-code-num">2</td>
+                                <td class="table-cont table-code-cont">    return 0;</td>
+                            </tr>
+                            <tr>
+                                <td class="table-num table-code-num">3</td>
+                                <td class="table-cont table-code-cont">}</td>
+                            </tr>
+                        </tbody>
+                    </table></code></pre>
+
+            <p>Здесь определяется функция с именем <code>main</code>, которая не принимает никаких аргументов (внутри круглых скобок ничего нет) и не выполняет никаких содержательных команд. В каждой программе на C++ должна быть ровно одна функция <code>main</code> — с неё начинается выполнение программы.</p>
+
+            <p>У функции указан тип возвращаемого значения <code>int</code> (целое число), и она возвращает <code>0</code> — в данном случае это сообщение для операционной системы, что программа выполнилась успешно. И наоборот, ненулевой код возврата означает, что при выполнении возникла ошибка (например, программа получила некорректные входные данные).</p>
+
+            <p>Для функции <code>main</code> разрешается не писать завершающий <code>return 0</code>, чем мы и будем пользоваться далее для краткости. Поэтому самую короткую программу можно было бы написать вот так:</p>
+
+            <pre class="hscd"><table class="table-code">
+                    <tbody>
+                    <tr>
+                        <td class="table-code-num">1</td>
+                        <td class="table-code-cont">int main() {</td>
+                    </tr>
+                    <tr>
+                        <td class="table-code-num">2</td>
+                        <td class="table-code-cont">}</td>
+                    </tr>
+                    </tbody>
+                </table></pre>
+        <h2 class="article__heading_l">
+            Hello World!
+        </h2>
+
+            <p>Соблюдая традиции, напишем простейшую программу на C++ — она выведет приветствие в консоль:</p>
+
+            <pre class="hscd"><table class="table-code">
+                <tbody>
+                    <tr>
+                            <td class="table-code-num">1</td>
+                            <td class="table-code-cont">#include &lt;iostream&gt;</td>
+                        </tr>
+                    <tr>
+                            <td class="table-code-num">2</td>
+                            <td class="table-code-cont"></td>
+                        </tr>
+                    <tr>
+                            <td class="table-code-num">3</td>
+                            <td class="table-code-cont">int main() {</td>
+                        </tr>
+                    <tr>
+                            <td class="table-code-num">4</td>
+                            <td class="table-code-cont">    std::cout << "Hello, world!\n";</td>
+                        </tr>
+                    <tr>
+                            <td class="table-code-num">5</td>
+                            <td class="table-code-cont">}</td>
+                        </tr>
+                </tbody>
+            </table></pre>
+
+            <p>Разберём её подробнее.</p>
+
+            <p>Директива <code>#include &lt;iostream&gt;</code> подключает стандартный библиотечный заголовочный файл для работы с потоками ввода-вывода (input-output streams). Для печати мы используем поток вывода <code>std::cout</code>, где <code>cout</code> расшифровывается как character output, то есть «символьный вывод».</p>
+
+            <p>В теле функции <code>main</code> мы передаём в <code>std::cout</code> строку <code>Hello, world!</code> с завершающим <a href="https://en.wikipedia.org/wiki/Newline">переводом строки</a> <code>\n</code>. В зависимости от операционной системы <code>\n</code> будет преобразован в один или в два управляющих байта с кодами <code>0A</code> или <code>0D 0A</code> соответственно.</p>
+
+            <p>Инструкции внутри тела функции завершаются точками с запятой.</p>
+
+        <h2 class="article__heading_l">Компиляция в Compiler Explorer</h2>
+
+            <p>Онлайн-компилятор Compiler Explorer позволяет запускать ваш код на нашем сайте. Мы покажем, как запускать ваш код в онлайн-компиляторе.</p>
+
+            <p>Вставьте код программы в окно компилятора слева на странице "Тренажёр"</p>
+
+            <img class="article-image-1.1" src="/img/article-1.1.png" alt="Демонстрация диалогового окна">
+
+            <p>Сразу после этого в правом окне компилятора будет выдан реазультат компиляции вашего кода в строке <code>Program stdout</code>:</p>
+
+            <img class="article-image-1.2" src="/img/article-1.2.png" alt="Демонстрация компиляции">
+        <h2 class="article__heading_l">Комментарии</h2>
+
+            <p>Комментарии — это фрагменты программы, которые игнорируются компилятором и предназначены для программиста. В C++ есть два вида комментариев — однострочные и многострочные:</p>
+            <pre class="hscd"><table class="table-code">
+                    <tbody>
+                        <tr>
+                            <td class="table-code-num">1</td>
+                            <td class="table-code-cont">int main() {  // однострочный комментарий продолжается до конца строки</td>
+                        </tr>
+                        <tr>
+                            <td class="table-code-num">2</td>
+                            <td class="table-code-cont"></td>
+                        </tr>
+                        <tr>
+                            <td class="table-code-num">3</td>
+                            <td class="table-code-cont">/* Пример</td>
+                        </tr>
+                        <tr>
+                            <td class="table-code-num">4</td>
+                            <td class="table-code-cont">   многострочного</td>
+                        </tr>
+                        <tr>
+                            <td class="table-code-num">5</td>
+                            <td class="table-code-cont">   комментария */</td>
+                        </tr>
+                        <tr>
+                            <td class="table-code-num">6</td>
+                            <td class="table-code-cont">}</td>
+                        </tr>
+                    </tbody>
+                </table></pre>
+
+            <p>Мы будем использовать комментарии в примерах кода для пояснений, а в реальных программах ими лучше не злоупотреблять.</p>
+
+            <p><strong>Хорошо:</strong> комментировать, что делает библиотека, функция или класс или почему этот код написан именно так.</p>
+
+            <p><strong>Плохо:</strong>  комментировать, что происходит на отдельных строчках. Это признак того, что код можно написать лучше.</p>
+
+        <h2 class="article__heading_l">Библиотеки и заголовочные файлы</h2>
+
+            <p>Библиотека — это код, который можно переиспользовать в разных программах. В стандарт языка C++ входит спецификация так называемой <a href="https://en.cppreference.com/w/cpp/standard_library">стандартной библиотеки</a>, которая поставляется вместе с компилятором. Она содержит различные структуры данных (контейнеры), типовые алгоритмы, средства ввода-вывода и т. д. Конструкции из этой библиотеки предваряются префиксом <code>std::</code>, который обозначает <em>пространство имён</em>.</p>
+
+            <p>Чтобы воспользоваться теми или иными библиотечными конструкциями, в начале программы надо подключить нужные <a href="https://en.cppreference.com/w/cpp/header">заголовочные файлы</a>. Так, в программе, которая печатала <code>Hello, world!</code>, нам уже встречался заголовочный файл <code>iostream</code> и конструкция <code>std::cout</code> из стандартной библиотеки.</p>
+
+            <p>Для C++ существует также <a href="https://en.cppreference.com/w/cpp/links/libs">множество сторонних библиотек</a>. Наиболее известной коллекцией сторонних библиотек для C++ является <a href="https://en.wikipedia.org/wiki/Boost_(C%2B%2B_libraries)">Boost</a>.</p>
+
+        <h2 class="article__heading_l">Ошибки компиляции кода</h2>
+
+            <p>Перед запуском программу необходимо <em>скомпилировать</em>. Компилятор проверяет корректность программы и генерирует исполняемый файл. Во время компиляции компилятор может обнаружить синтаксические ошибки.</p>
+
+            <p>Пример программы с ошибкой:</p>
+
+            <pre class="hscd"><table class="table-code">
+                    <tbody>
+                        <tr>
+                            <td class="table-code-num">1</td>
+                            <td class="table-code-cont">#include &lt;iostream&gt;</td>
+                        </tr>
+                        <tr>
+                            <td class="table-code-num">2</td>
+                            <td class="table-code-cont"></td>
+                        </tr>
+                        <tr>
+                            <td class="table-code-num">3</td>
+                            <td class="table-code-cont">int main() {</td>
+                        </tr>
+                        <tr>
+                            <td class="table-code-num">4</td>
+                            <td class="table-code-cont">    cout << "Hello, world\n"</td>
+                        </tr>
+                    </tbody>
+                </table></pre>
+
+            <p>Компилятор может выдать такое сообщение:</p>
+
+            <pre class="hscd">
+<div class="hscd-error">
+Could not execute the program
+Compiler returned: 1
+Compiler stderr
+&lt;source>: In function 'int main()':
+&lt;source>:3:5: error: 'cout' was not declared in this scope; did you mean 'std::cout'?
+    3 |     cout << "Hello, world\n"
+      |     ^~~~
+In file included from &lt;source>:1:
+/opt/compiler-explorer/gcc-14.1.0/include/c++/14.1.0/iostream:63:18: note: 'std::cout' declared here
+   63 |   extern ostream cout;          ///< Linked to standard output
+      |                  ^~~~
+&lt;source>:3:29: error: expected '}' at end of input
+    3 |     cout << "Hello, world\n"
+      |                             ^
+&lt;source>:2:12: note: to match this '{'
+    2 | int main() {
+      |            ^
+</div></pre>
+
+            <p>Первая ошибка — вместо <code>std::cout</code> мы написали <code>cout</code>. Вторая ошибка — не поставили точку запятой после <code>"Hello, world!\n"</code>. Наконец, третья – не закрыли фигурную скобку с телом функции.</p>
+
+            <p>Ошибки компиляции (compile errors) следует отличать от возможных <em>ошибок времени выполнения</em> (runtime errors), которые происходят после запуска программы и, как правило, зависят от входных данных, неизвестных во время компиляции.</p>
+
+        <h2 class="article__heading_l">Отступы и оформление кода</h2>
+
+            <p>
+                Фрагменты программы на C++ могут быть иерархически вложены друг в друга. На верхнем уровне находятся функции, внутри них написаны их тела, в теле могут быть составные операторы, и так далее.
+            </p>
+
+            <p>Среди программистов есть соглашение — писать внутренние блоки кода с отступами вправо: компилятор полностью игнорирует эти отступы, а код читать удобнее. Мы будем использовать отступы в четыре пробела. Также мы будем придерживаться <a href="https://github.com/catboost/catboost/blob/master/CPP_STYLE_GUIDE.md">стиля оформления кода, принятого в Яндексе</a>. Имена переменных мы будем писать с маленькой буквы, имена функций и классов — с большой (если речь не идёт о конструкциях стандартной библиотеки, где действуют другие соглашения).</p>
+
+        <h2 class="article__heading_l">Переменные</h2>
+
+            <p>Любая содержательная программа так или иначе обрабатывает данные в памяти. Переменная — это именованный блок данных определённого типа. Чтобы определить переменную, нужно указать её тип и имя. В общем виде это выглядит так:</p>
+
+            <pre class="hscd"><table class="table-code">
+                    <tbody>
+                        <tr>
+                            <td class="table-code-num ">1</td>
+                            <td class="table-code-cont ">Type name;</td>
+                        </tr>
+                    </tbody>
+                </table></pre>
+
+            <p>где <code>Type</code> — конкретный тип данных (например, строка или число), а <code>name</code> — имя переменной. Имена переменных <a href="https://en.cppreference.com/w/cpp/language/identifiers">должны состоять</a> из латинских букв, цифр и знаков подчёркивания и не должны начинаться с цифры. Также можно в одной строке определить несколько переменных одного типа:</p>
+
+            <pre class="hscd"><table class="table-code">
+                    <tbody>
+                        <tr>
+                            <td class="table-code-num ">1</td>
+                            <td class="table-code-cont ">Type name1, name2, name3;</td>
+                        </tr>
+                    </tbody>
+                </table></pre>
+
+            <p>Например:</p>
+
+            <pre class="hscd"><table class="table-code">
+                    <tbody>
+                        <tr>
+                            <td class="table-code-num">1</td>
+                            <td class="table-code-cont">#include &lt;string>  // библиотека, в которой определён тип std::string</td>
+                        </tr>
+                        <tr>
+                            <td class="table-code-num">2</td>
+                            <td class="table-code-cont"></td>
+                        </tr>
+                        <tr>
+                            <td class="table-code-num">3</td>
+                            <td class="table-code-cont">int main() {</td>
+                        </tr>
+                        <tr>
+                            <td class="table-code-num">4</td>
+                            <td class="table-code-cont">    // Определяем переменную value целочисленного типа int</td>
+                        </tr>
+                        <tr>
+                            <td class="table-code-num">5</td>
+                            <td class="table-code-cont">    int value;</td>
+                        </tr>
+                        <tr>
+                            <td class="table-code-num">6</td>
+                            <td class="table-code-cont"></td>
+                        </tr>
+                        <tr>
+                            <td class="table-code-num">7</td>
+                            <td class="table-code-cont">    // Определяем переменные name и surname типа std::string (текстовая строка)</td>
+                        </tr>
+                        <tr>
+                            <td class="table-code-num">8</td>
+                            <td class="table-code-cont">    std::string name, surname;</td>
+                        </tr>
+                        <tr>
+                            <td class="table-code-num">9</td>
+                            <td class="table-code-cont">}</td>
+                        </tr>
+                    </tbody>
+                </table></pre>
+
+            <p>В этом примере мы используем встроенный в язык тип <code>int</code> (от слова integer — целое число) и поставляемый со стандартной библиотекой тип <code>std::string</code>. (Можно было бы использовать для строк встроенный тип с массивом символов, но это неудобно.)</p>
+
+            <p>Тип переменной должен быть известен компилятору во время компиляции.</p>
+
+            <p>От типа зависит:</p>
+
+            <ul>
+                <li>сколько байтов памяти потребуется для хранения данных;</li>
+                <li>как интерпретировать эти байты;</li>
+                <li>какие операции с этой переменной возможны.</li>
+            </ul>
+
+            <p>Например, переменной типа <code>int</code> можно присваивать значения и с ней можно производить арифметические операции. Подробнее про разные типы данных и их размер в памяти мы поговорим ниже.</p>
+
+            <p>Важно понимать, что тип остаётся с переменной навсегда. Например, присвоить целочисленной переменной строку не получится — это вызовет ошибку компиляции:</p>
+
+            <pre class="hscd"><table class="table-code">
+                    <tbody>
+                        <tr>
+                            <td class="table-code-num">1</td>
+                            <td class="table-code-cont">int main() {</td>
+                        </tr>
+                        <tr>
+                            <td class="table-code-num">2</td>
+                            <td class="table-code-cont">    int value;</td>
+                        </tr>
+                        <tr>
+                            <td class="table-code-num">3</td>
+                            <td class="table-code-cont">    value = 42;  // OK</td>
+                        </tr>
+                        <tr>
+                            <td class="table-code-num">4</td>
+                            <td class="table-code-cont">    value = "Hello!";  // ошибка компиляции!</td>
+                        </tr>
+                        <tr>
+                            <td class="table-code-num">5</td>
+                            <td class="table-code-cont">}</td>
+                        </tr>
+                    </tbody>
+                </table></pre>
+
+            <p>Переменные можно сразу проинициализировать значением. В С++ есть <a href="https://en.cppreference.com/w/cpp/language/initialization">много разных способов инициализации</a>. Нам пока будет достаточно способа, который называется copy initialization:</p>
+
+            <pre class="hscd"><table class="table-code">
+                    <tbody>
+                        <tr>
+                            <td class="table-code-num">1</td>
+                            <td class="table-code-cont">#include &lt;string></td>
+                        </tr>
+                        <tr>
+                            <td class="table-code-num">2</td>
+                            <td class="table-code-cont"></td>
+                        </tr>
+                        <tr>
+                            <td class="table-code-num">3</td>
+                            <td class="table-code-cont">int main() {</td>
+                        </tr>
+                        <tr>
+                            <td class="table-code-num">4</td>
+                            <td class="table-code-cont">    int value = 42;</td>
+                        </tr>
+                        <tr>
+                            <td class="table-code-num">5</td>
+                            <td class="table-code-cont">    std::string title = "Bjarne Stroustrup";</td>
+                        </tr>
+                        <tr>
+                            <td class="table-code-num">6</td>
+                            <td class="table-code-cont">}</td>
+                        </tr>
+                    </tbody>
+                </table></pre>
+
+            <p>Если переменная была объявлена, но нигде дальше не использовалась, то компилятор выдаёт об этом предупреждение. При проверке решений мы используем опцию <code>-Werror</code>, которая считает предупреждения компилятора ошибками компиляции.</p>
+    </div>
+</div>
+<div class="article__links">
+    <a th:href="@{/}" class="article__link-back">На главную</a>
+    <a th:href="@{/articles/article-2}" class="article__link-next">Потоковый ввод и вывод</a>
+</div>
+<footer>
+    <div class="footer">
+        <p class="footer-cont">
+            Авторское право © 2024 ФГБОУ ВО "Новосибирский государственный педагогический университет"
+            Разработка и поддержка сайта – ИФМИТО НГПУ
+        </p>
+    </div>
+</footer>
+</body>
+</html>

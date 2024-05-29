@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>About us</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+<header class="header" id="header">
+    <a th:href="@{/}" class="logo">
+        <img src="/img/logo.png" alt="C++">
+    </a>
+    <div class="links">
+        <a th:href="@{/articles/index}" class="link">Учебные материалы</a>
+        <a th:href="@{/training_module}" class="link">Тренажер</a>
+        <a th:href="@{/about}" class="link">О нас</a>
+    </div>
+</header>
+
+<div class="article__info">
+    <h1 class="article__heading_xl">На данной странице рассказано о</h1>
+    <h2 class="article__heading_l">Этом сайте</h2>
+    <p>Данный сайт позволит вам изучить основы работы с языком C++ по набору учебных материалов с примерами готового кода. Большинство материалов ориентированны на новичков, знающих основы программирования на уровне школьной программы, но хотели бы расширить свои знания о языке C++</p>
+
+    <h2 class="article__heading_l">Разработчике</h2>
+    <p>Сайт разработан студентом Новосибирского Государственного Педагогического Университета, кафедра физико-математического (НГПУ), информационного и технологического образования (ИФМИТО), 4 курс, город Новосибирск. 2024 год.</p>
+</div>
+
+<footer>
+    <div class="footer">
+        <p class="footer-cont">
+            Авторское право © 2024 ФГБОУ ВО "Новосибирский государственный педагогический университет"
+            Разработка и поддержка сайта – ИФМИТО НГПУ
+        </p>
+    </div>
+</footer>
+</body>
+</html>

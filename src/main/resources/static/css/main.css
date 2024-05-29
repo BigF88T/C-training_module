@@ -1,0 +1,463 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+
+.faq-img-top {
+    width: 100%;
+    top: -25px;
+}
+
+.faq-item_question {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 26px;
+}
+
+.faq-item-click {
+    text-align: left;
+}
+
+.faq-item_answer {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+}
+
+.faq-img-top {
+    width: 100%;
+    top: -25px;
+}
+
+.faq-item_question {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 26px;
+}
+
+.faq-item-click {
+    text-align: left;
+}
+
+.faq-item_answer {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+}
+
+/************* SECTION-FAQ *************/
+.section-faq{
+    min-height: 100vh;
+}
+
+.faq-img-top {
+    position: absolute;
+    top: -100px;
+    z-index: 0;
+}
+
+.faq-item {
+    padding: 10px;
+    background-color: #A0A0A4;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,0.3);
+}
+.faq-item.active {
+    border-radius: 10px 10px 0 0 ;
+}
+.faq-item.active .faq-item_answer {
+    opacity: 1;
+    transition: all 0.3s ease;
+}
+
+.faq-item_question {
+    color:  #fff;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 28px;
+}
+
+.faq-item-click {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.faq-item-text {
+    width: 100%;
+}
+
+.faq-item_answer {
+    pointer-events: none;
+    transition: all 0.3s ease;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 28px;
+    opacity: 0;
+    max-height: 0;
+    margin: 0;
+}
+
+.faq-item-btn div {
+    transition: all 0.3s ease;
+    width: 16px;
+    margin-top: -2px;
+    height: 2px;
+    background: #ffffff;
+    border-radius: 50%;
+}
+
+.container {
+    width: 1200px;
+    margin: 0 auto;
+    font-family: "Montserrat", "Arial", sans-serif;
+}
+
+button {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer; 
+}
+
+.header {
+    background-color: #49678D;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 10px 348px;
+    align-items: center;
+    box-shadow: 0 0 10px black;
+
+}
+.logo {
+    color: #fff;
+    text-decoration: none;
+}
+.links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: "Montserrat", "Arial", sans-serif;
+}
+.link {
+    color: #fff;
+    text-decoration: none;
+    transition: all ease .3s;
+}
+.link:hover {
+    color: #d5d5d5;
+    transition: all ease .3s;
+}
+.link:not(:last-child) {
+    margin-right: 30px;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background: #CAD5E333;
+}
+.faq-item {
+    position: relative;
+    z-index: 0;
+}
+
+.a-href_1 {
+    z-index: 3;
+}
+
+.open-1 {
+    max-height: 0;
+    transition: all 0.8s ease-out;
+    overflow: hidden;
+    padding: 0 0 0 10px;
+    border-radius: 0 0 10px 10px;
+}
+
+.open-1.active {
+    transform: translate(0,0);
+    max-height: 100vh;
+    transition: all 0.8s ease-in;
+    background-color: #ffffff;
+    padding: 10px 0 10px 10px;
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,.3);
+}
+
+.open-2 {
+    max-height: 0;
+    transition: all 0.8s ease-out;
+    overflow: hidden;
+    padding: 0 0 0 10px;
+    border-radius: 0 0 10px 10px;
+}
+
+.open-2.active {
+    transform: translate(0,0);
+    max-height: 100vh;
+    transition: all 0.8s ease-in;
+    background-color: #ffffff;
+    padding: 10px 0 10px 10px;
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,.3);
+}
+
+.open-3 {
+    max-height: 0;
+    transition: all 0.8s ease-out;
+    overflow: hidden;
+    padding: 0 0 0 10px;
+    border-radius: 0 0 10px 10px;
+}
+
+.open-3.active {
+    transform: translate(0,0);
+    max-height: 100vh;
+    transition: all 0.8s ease-in;
+    background-color: #ffffff;
+    padding: 10px 0 10px 10px;
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,.3);
+}
+.open-4 {
+    max-height: 0;
+    transition: all 0.8s ease-out;
+    overflow: hidden;
+    padding: 0 0 0 10px;
+    border-radius: 0 0 10px 10px;
+}
+
+.open-4.active {
+    transform: translate(0,0);
+    max-height: 100vh;
+    transition: all 0.8s ease-in;
+    background-color: #ffffff;
+    padding: 10px 0 10px 10px;
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,.3);
+}
+
+.faq-item  .faq-item-btn div:nth-child(1) {
+    transform: rotate(90deg);
+    transition: all ease 1s;
+}
+
+.faq-item.active  .faq-item-btn div:nth-child(1) {
+    transform: rotate(180deg);
+    transition: all ease 1s;
+}
+
+li {
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+
+li:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+ul {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    padding-left: 3px;
+}
+
+.faq-item-click {
+    margin-bottom: 0;
+}
+
+.faq-item_question {
+    margin: 0;
+    font-size: 40px;
+}
+
+img{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+.article-image-4\.1 {
+
+}
+.logo{
+    height: 50px;
+    width: 50px;
+}
+
+footer{
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    background-color: #474A51;
+    width: 100%;
+    text-align: center;
+    color: white;
+    margin-top: 100px;
+}
+.training-module {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+iframe {
+    order: 0;
+    flex: 1 1 auto;
+    align-self: stretch;
+    width: 100%;
+    height: 77vh;
+    border: 0;
+}
+.article__info{
+    font-family: "Montserrat", "Arial", sans-serif;
+    max-width: var(--width-page-content);
+    margin: 60px auto 60px;
+    margin-bottom: 60px;
+    background-color: #edf4ff;
+    box-shadow: 0 1px 9px 0 black;
+    padding: 87px;
+    padding-top: 1px;
+    border-radius: 10px;
+}
+.article__info h1{
+    font-size: 40px;
+}
+.article__info h2{
+    font-size: 25px;
+}
+.article__info div.article__content p code{
+    font-size: 1.2em;
+}
+.table-code{
+    text-decoration: none;
+    width:auto;
+    text-align:left;
+    border-collapse: collapse;
+}
+.table-code th{
+    font-weight:500;
+    font-size:22px;
+    color:#ffffff;
+    background-color:#354251;
+}
+.table-code td{
+    font-size:17px;
+    color:#354251;
+
+}
+.table-code td,.table-code th{
+    white-space:pre-wrap;
+    padding:5px 24px;
+    line-height:20px;
+    vertical-align: middle;
+}
+.table-code tr:hover{
+    background-color:#f9fafb
+}
+.table-code tr:hover td{
+    color:#0282de;
+    cursor:pointer;
+    background-color: #cfe2ff;
+}
+.table-code-num {
+    user-select: none;
+    border-collapse: collapse;
+    border-right: 1px solid #245488;
+}
+.article-image-1\.1{
+    width: 100%;
+}
+.article-image-1\.2{
+    width: 100%;
+}
+.article__content a{
+    text-decoration: underline;
+    transition: 0.6s;
+}
+.article__content a:hover{
+    text-decoration: none;
+    color: #4373ff;
+}
+.article__content ul li {
+    padding-left: 44px;
+}
+.article__content ul li code{
+    font-size: 1.2em;
+}
+.article__content ul li::before {
+    position: relative;
+    top: 0;
+    left: -15px;
+    content: "—";
+}
+.article__content figure figcaption {
+    display: flex;
+    font-size: 14px;
+    line-height: 18px;
+}
+.article__content figure figcaption::before {
+    min-width: 53px;
+    content: "Рис. : 1";
+}
+.article__links {
+    font-family: "Montserrat", "Arial", sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    max-width: var(--width-page-content);
+    margin: 60px auto 60px;
+    margin-bottom: 60px;
+    background-color: #0099ff;
+    box-shadow: 0 0 5px 0 black;
+    padding: 20px 87px 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.article__links a {
+    color: white;
+    transition: all ease .2s;
+}
+.article__links a:hover{
+    color: #cccccc;
+    transition: all ease .2s;
+}
+.hscd-error{
+    font-size: 1.2em;
+}
+.index__info {
+    font-family: "Montserrat", "Arial", sans-serif;
+    max-width: var(--width-index-page-content);
+    margin: 25px auto 10px;
+    padding: 1px 87px 40px;
+}
+.index__info h1 {
+    font-size: 40px;
+}
+
+@media (min-width: 1280px) {
+    :root {
+        --width-page-content: 900px;
+        --width-index-page-content: 1348px;
+    }
+}
+@media (min-width: 800px) {
+    .header{
+        padding: 10px 100px;
+    }
+    .container{
+        width: 71%;
+    }
+}

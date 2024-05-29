@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin page</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+<header class="header" id="header">
+    <a th:href="@{/}" class="logo">
+        <img src="/img/logo.png" alt="C++">
+    </a>
+    <div class="links">
+        <a th:href="@{/articles/index}" class="link">Учебные материалы</a>
+        <a th:href="@{/training_module}" class="link">Тренажер</a>
+        <a th:href="@{/about}" class="link">О нас</a>
+    </div>
+</header>
+
+<table style="border-collapse: collapse; border: black solid 1px">
+    <tr style="border-collapse: collapse; border: black solid 1px">
+        <th style="border-collapse: collapse; border: black solid 1px">Id</th>
+        <th style="border-collapse: collapse; border: black solid 1px">User name</th>
+        <th style="border-collapse: collapse; border: black solid 1px">Role</th>
+    </tr>
+
+    <tr th:each="lst : ${allUsers}" style="border-collapse: collapse; border: black solid 1px">
+        <td th:utext="${lst.id}" style="border-collapse: collapse; border: black solid 1px">brand</td>
+        <td th:utext="${lst.username}" style="border-collapse: collapse; border: black solid 1px">color</td>
+        <td th:utext="${lst.role}" style="border-collapse: collapse; border: black solid 1px">power</td>
+    </tr>
+
+</table>
+</body>
+</html>

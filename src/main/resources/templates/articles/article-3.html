@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Типы данных</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+<header class="header" id="header">
+    <a th:href="@{/}" class="logo">
+        <img src="/img/logo.png" alt="C++">
+    </a>
+    <div class="links">
+        <a th:href="@{/articles/index}" class="link">Учебные материалы</a>
+        <a th:href="@{/training_module}" class="link">Тренажер</a>
+        <a th:href="@{/about}" class="link">О нас</a>
+    </div>
+</header>
+
+<div class="article__info">
+    <h1 class="article__heading_xl">
+        <span>1.3</span>
+        Типы данных
+    </h1>
+    <div class="article__content">
+
+        <p>
+            C++ — язык со статической типизацией. У каждой переменной на этапе компиляции должен быть чётко определённый тип данных. Про каждый тип данных заранее известно, сколько места в памяти занимает переменная такого типа.
+        </p>
+
+        <p>
+            В этом параграфе мы познакомимся с некоторыми базовыми типами данных и с понятием области видимости переменных.
+        </p>
+
+        <h2 class="article__heading_l">
+            Области видимости
+        </h2>
+
+        <p>В С++ существует понятие <a href="https://en.cppreference.com/w/cpp/language/scope">области видимости</a> (scope) переменной. Эта область ограничивается блоком кода, в котором переменная определена. Рассмотрим пример:</p>
+
+        <pre class="hscd"><table class="table-code">
+            <tbody>
+                <tr>
+                    <td class="table-code-num">1</td>
+                    <td class="table-code-cont">#include &lt;iostream></td>
+                </tr>
+                <tr>
+                    <td class="table-code-num">2</td>
+                    <td class="table-code-cont"></td>
+                </tr>
+                <tr>
+                    <td class="table-code-num">3</td>
+                    <td class="table-code-cont">int a = 1;  // глобальная переменная</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num">4</td>
+                    <td class="table-code-cont"></td>
+                </tr>
+                <tr>
+                    <td class="table-code-num">5</td>
+                    <td class="table-code-cont">int main() {</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num">6</td>
+                    <td class="table-code-cont">    int b = 2;  // локальная переменная</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num">7</td>
+                    <td class="table-code-cont">    {</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num">8</td>
+                    <td class="table-code-cont">        int c = 3;  // локальная переменная внутри блока</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num">9</td>
+                    <td class="table-code-cont">        std::cout &lt;< a &lt;< " " &lt;< b &lt;< " " &lt;< c &lt;< "\n";  // корректно</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num">10</td>
+                    <td class="table-code-cont">    }</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num">11</td>
+                    <td class="table-code-cont"></td>
+                </tr>
+                <tr>
+                    <td class="table-code-num">12</td>
+                    <td class="table-code-cont">    // Эта строчка не скомпилируется,</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num">13</td>
+                    <td class="table-code-cont">    // так как переменная c не определена в данной области:</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num">14</td>
+                    <td class="table-code-cont">    std::cout &lt;< c &lt;< "\n";</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num">15</td>
+                    <td class="table-code-cont">}</td>
+                </tr>
+            </tbody>
+        </table></pre>
+
+        <p>В этом примере есть три области:</p>
+
+        <ul>
+            <li>
+                глобальная, в которой определена переменная <code>a</code>;
+            </li>
+            <li>
+                тело функции <code>main</code>, в которой определена переменная <code>b</code>;
+            </li>
+            <li>
+                внутренний блок, в котором определена переменная <code>c</code>.
+            </li>
+        </ul>
+
+        <p>В последней строке примера переменная <code>c</code> недоступна, так как её область видимости уже закончилась. В случае коллизии имён компилятор всегда выбирает самую вложенную область видимости.</p>
+
+        <p>Рассмотрим пример:</p>
+
+        <pre class="hscd"><table class="table-code">
+                <tbody>
+                    <tr>
+                        <td class="table-code-num">1</td>
+                        <td class="table-code-cont">#include &lt;iostream></td>
+                    </tr>
+                    <tr>
+                        <td class="table-code-num">2</td>
+                        <td class="table-code-cont"></td>
+                    </tr>
+                    <tr>
+                        <td class="table-code-num">3</td>
+                        <td class="table-code-cont">int main() {</td>
+                    </tr>
+                    <tr>
+                        <td class="table-code-num">4</td>
+                        <td class="table-code-cont">    int x = 1;</td>
+                    </tr>
+                    <tr>
+                        <td class="table-code-num">5</td>
+                        <td class="table-code-cont">    std::cout &lt;< x &lt;< "\n";  // напечатает 1</td>
+                    </tr>
+                    <tr>
+                        <td class="table-code-num">6</td>
+                        <td class="table-code-cont">    {</td>
+                    </tr>
+                    <tr>
+                        <td class="table-code-num">7</td>
+                        <td class="table-code-cont">        int x = 2;  // новая переменная, к предыдущему x не имеет отношения</td>
+                    </tr>
+                    <tr>
+                        <td class="table-code-num">8</td>
+                        <td class="table-code-cont">        std::cout &lt;< x &lt;< "\n";  // напечатает 2</td>
+                    </tr>
+                    <tr>
+                        <td class="table-code-num">9</td>
+                        <td class="table-code-cont">    }</td>
+                    </tr>
+                    <tr>
+                        <td class="table-code-num">10</td>
+                        <td class="table-code-cont">    std::cout &lt;< x &lt;< "\n";  // снова напечатает 1</td>
+                    </tr>
+                    <tr>
+                        <td class="table-code-num">11</td>
+                        <td class="table-code-cont">}</td>
+                    </tr>
+                </tbody>
+            </table></pre>
+
+        <h2 class="article__heading_l">Инициализация локальных переменных</h2>
+
+        <p>Локальные переменные простых типов, таких как <code>int</code>, не инициализируются по умолчанию нулём. Компилятор просто выделяет для них байты в стековой памяти, но при этом он не обязан как-либо их заполнять. Это один из принципов C++: <a href="https://en.cppreference.com/w/cpp/language/Zero-overhead_principle"><em>мы не должны платить за то, что не используем</em></a>.</p>
+
+        <p>Следующий фрагмент кода может напечатать всё что угодно:</p>
+
+        <pre class="hscd"><table class="table-code">
+            <tbody>
+                <tr>
+                    <td class="table-code-num ">1</td>
+                    <td class="table-code-cont ">#include &lt;iostream></td>
+                </tr>
+                <tr>
+                    <td class="table-code-num ">2</td>
+                    <td class="table-code-cont "></td>
+                </tr>
+                <tr>
+                    <td class="table-code-num ">3</td>
+                    <td class="table-code-cont ">int main() {</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num ">4</td>
+                    <td class="table-code-cont ">    int x;</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num ">5</td>
+                    <td class="table-code-cont ">    std::cout &lt;< x &lt;< "\n";  // неопределённое поведение!</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num ">6</td>
+                    <td class="table-code-cont ">    int y;</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num ">7</td>
+                    <td class="table-code-cont ">    std::cin >> y;  // а это допустимый сценарий</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num ">8</td>
+                    <td class="table-code-cont ">}</td>
+                </tr>
+            </tbody>
+        </table></pre>
+
+        <p>Компиляторы <code>g++</code> и <code>clang++</code> обычно дают предупреждения о чтении неинициализированных переменных при использовании опции <code>-Wall</code> или <code>-Wuninitialized</code>:</p>
+
+        <pre class="hscd-error">&lt;source>:9:18: warning: variable 'x' is uninitialized when used here [-Wuninitialized]
+    9 |     std::cout &lt;< x &lt;< "\n";  // неопределённое поведение!
+      |                  ^
+&lt;source>:7:10: note: initialize the variable 'x' to silence this warning
+    7 |     int x;
+      |          ^
+      |           = 0
+1 warning generated.
+</pre>
+        <p>Заметим, что <code>std::string</code> является сложным типом и переменные такого типа всегда по умолчанию инициализируются пустой строкой. Поэтому нет необходимости писать <code>std::string s = "";</code>. Пишите просто <code>std::string s;</code>.</p>
+
+        <h2 class="article__heading_l">Простые типы данных</h2>
+
+        <p>С типом <code>int</code> мы уже знакомы. Рассмотрим другие <a href="https://en.cppreference.com/w/cpp/language/types">фундаментальные типы данных</a> в С++. Это так называемые интегральные типы и типы для вещественных чисел.</p>
+
+        <pre class="hscd"><table class="table-code">
+	<tbody>
+		<tr>
+			<td class="table-code-num">1</td>
+			<td class="table-code-cont">int main() {</td>
+		</tr>
+		<tr>
+			<td class="table-code-num">2</td>
+			<td class="table-code-cont">    char c = '1';    // символ</td>
+		</tr>
+		<tr>
+			<td class="table-code-num">3</td>
+			<td class="table-code-cont">    bool b = true; // логическая переменная, принимает значения true и false</td>
+		</tr>
+		<tr>
+			<td class="table-code-num">4</td>
+			<td class="table-code-cont">    int i = 42; // целое число (занимает, как правило, 4 байта)</td>
+		</tr>
+		<tr>
+			<td class="table-code-num">5</td>
+			<td class="table-code-cont">    short int si = 17; // короткое целое (занимает 2 байта)</td>
+		</tr>
+		<tr>
+			<td class="table-code-num">6</td>
+			<td class="table-code-cont">    long li = 12321321312; // длинное целое (8 байт)</td>
+		</tr>
+		<tr>
+			<td class="table-code-num">7</td>
+			<td class="table-code-cont">    long long lli = 12321321312; // длинное целое (8 байт)</td>
+		</tr>
+		<tr>
+			<td class="table-code-num">8</td>
+			<td class="table-code-cont">    float f = 2.71828; // дробное число с плавающей запятой (4 байта)</td>
+		</tr>
+		<tr>
+			<td class="table-code-num">9</td>
+			<td class="table-code-cont">    double d = 3.141592; // дробное число двойной точности (8 байт)</td>
+		</tr>
+		<tr>
+			<td class="table-code-num">10</td>
+			<td class="table-code-cont">    long double ld = 1e15; // длинное дробное (как правило, 16 байт)</td>
+		</tr>
+		<tr>
+			<td class="table-code-num">11</td>
+			<td class="table-code-cont">}</td>
+		</tr>
+	</tbody>
+</table></pre>
+
+        <p>Обратите внимание, что символы, в отличие от строк (то есть массивов символов), записываются в апострофах, а не в кавычках. В примере выше мы записываем в переменную <code>c</code> символ единицы. Фактически в памяти хранится <a href="https://en.cppreference.com/w/cpp/language/ascii">ASCII-код</a> этого символа, который равен 49.</p>
+
+        <p>Напомним, что каждый тип данных занимает заранее известное количество байтов памяти. Стандарт языка С++ не накладывает жёстких ограничений на размеры типов, они могут отличаться для разных платформ и компиляторов.</p>
+
+        <p>О том, что делать с этой особенностью, мы расскажем ниже. А пока отметим, что узнать размер переменной или типа на этапе компиляции можно с помощью оператора <a href="https://en.cppreference.com/w/cpp/language/sizeof"><code>sizeof</code></a>.</p>
+
+        <p>Например, на 64-битной Linux-системе компилятор <code>clang++</code> использует такие размеры для типов:</p>
+
+        <pre class="hscd"><table class="table-code">
+            <tbody>
+                <tr>
+                    <td class="table-code-num">1</td>
+                    <td class="table-code-cont">int main() {</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num">2</td>
+                    <td class="table-code-cont">    std::cout &lt;< "char: " &lt;< sizeof(char) &lt;< "\n";  </td>
+                </tr>
+                <tr>
+                    <td class="table-code-num">3</td>
+                    <td class="table-code-cont">    std::cout &lt;< "bool: " &lt;< sizeof(bool) &lt;< "\n";    </td>
+                </tr>
+                <tr>
+                    <td class="table-code-num">4</td>
+                    <td class="table-code-cont">    std::cout &lt;< "short int: " &lt;< sizeof(short int) &lt;< "\n"; </td>
+                </tr>
+                <tr>
+                    <td class="table-code-num">5</td>
+                    <td class="table-code-cont">    std::cout &lt;< "int: " &lt;< sizeof(int) &lt;< "\n";     </td>
+                </tr>
+                <tr>
+                    <td class="table-code-num">6</td>
+                    <td class="table-code-cont">    std::cout &lt;< "long int: " &lt;< sizeof(long int) &lt;< "\n";  </td>
+                </tr>
+                <tr>
+                    <td class="table-code-num">7</td>
+                    <td class="table-code-cont">    std::cout &lt;< "long long int: " &lt;< sizeof(long long) &lt;< "\n"; </td>
+                </tr>
+                <tr>
+                    <td class="table-code-num">8</td>
+                    <td class="table-code-cont">    std::cout &lt;< "float: " &lt;< sizeof(float) &lt;< "\n";      </td>
+                </tr>
+                <tr>
+                    <td class="table-code-num">9</td>
+                    <td class="table-code-cont">    std::cout &lt;< "double: " &lt;< sizeof(double) &lt;< "\n";     </td>
+                </tr>
+                <tr>
+                    <td class="table-code-num">10</td>
+                    <td class="table-code-cont">    std::cout &lt;< "long double: " &lt;< sizeof(long double) &lt;< "\n";</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num">11</td>
+                    <td class="table-code-cont">}</td>
+                </tr>
+            </tbody>
+        </table></pre>
+
+        <h2 class="article__heading_l">Размеры стандартных типов</h2>
+
+        <p>По умолчанию числовые типы – знаковые. Они имеют диапазон значений от <mjx-container class="MathJax CtxtMenu_Attached_0" jax="SVG" style="font-size: 90%; position: relative;" tabindex="0" ctxtmenu_counter="0"><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo>−</mo><msup><mn>2</mn><mrow data-mjx-texclass="ORD"><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup></math></mjx-assistive-mml></mjx-container> до <mjx-container class="MathJax CtxtMenu_Attached_0" jax="SVG" style="font-size: 90%; position: relative;" tabindex="0" ctxtmenu_counter="1">            <mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mn>2</mn><mrow data-mjx-texclass="ORD"><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup><mo>−</mo><mn>1</mn></math></mjx-assistive-mml></mjx-container>, где <mjx-container class="MathJax CtxtMenu_Attached_0" jax="SVG" style="font-size: 90%; position: relative;" tabindex="0" ctxtmenu_counter="2"><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi></math></mjx-assistive-mml></mjx-container> – количество битов, занимаемых типом. Приставка <code>unsigned</code> перед типом делает его беззнаковым. В этом случае диапазон допустимых значений будет от 0 до <mjx-container class="MathJax CtxtMenu_Attached_0" jax="SVG" style="font-size: 90%; position: relative;" tabindex="0" ctxtmenu_counter="3"><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mn>2</mn><mi>n</mi></msup><mo>−</mo><mn>1</mn></math></mjx-assistive-mml></mjx-container>:</p>
+
+        <pre class="hscd"><table class="table-code">
+            <tbody>
+                <tr>
+                    <td class="table-code-num ">1</td>
+                    <td class="table-code-cont ">int main() {</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num ">2</td>
+                    <td class="table-code-cont ">    unsigned int ui = 4294967295;  // 2^32 - 1</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num ">3</td>
+                    <td class="table-code-cont ">}</td>
+                </tr>
+            </tbody>
+        </table></pre>
+
+        <p>Минимальное и максимальное значение, помещающееся в данный числовой тип, можно получить так:</p>
+
+        <pre class="hscd"><table class="table-code">
+            <tbody>
+                <tr>
+                    <td class="table-code-num">1</td>
+                    <td class="table-code-cont">#include &lt;iostream></td>
+                </tr>
+                <tr>
+                    <td class="table-code-num">2</td>
+                    <td class="table-code-cont">#include &lt;limits>  // необходимо для numeric_limits</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num">3</td>
+                    <td class="table-code-cont"></td>
+                </tr>
+                <tr>
+                    <td class="table-code-num">4</td>
+                    <td class="table-code-cont">int main() {</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num">5</td>
+                    <td class="table-code-cont">    // посчитаем для типа int:</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num">6</td>
+                    <td class="table-code-cont">    std::cout &lt;< "minimum value: " &lt;< std::numeric_limits&lt;int>::min() &lt;< "\n" </td>
+                </tr>
+                <tr>
+                    <td class="table-code-num">7</td>
+                    <td class="table-code-cont">              &lt;< "maximum value: " &lt;< std::numeric_limits&lt;int>::max() &lt;< "\n"; </td>
+                </tr>
+                <tr>
+                    <td class="table-code-num">8</td>
+                    <td class="table-code-cont">}</td>
+                </tr>
+            </tbody>
+        </table></pre>
+
+        <p>Данный пример на 64-битной Linux-системе напечатает:</p>
+
+        <pre>minimum value: -2147483648
+maximum value: 2147483647
+</pre>
+
+        <p>Приведённые выше примеры вывода оператора <code>sizeof</code> верны для 64-битных архитектур, которые на сегодняшний день распространены повсеместно. Однако если бы мы скомпилировали и запустили такую программу на компьютере с 32-битной архитектурой, то получили бы другие результаты. Например, <code>sizeof(long int)</code> стал бы равен 4, в то время как на современных компьютерах мы получили бы 8. Также бывают <a href="https://en.wikipedia.org/wiki/Embedded_system">встраиваемые системы</a>, под которые тоже можно писать на С++. Там битность архитектуры может быть ещё меньше, чем 32.</p>
+
+        <p>В заголовочном файле <code>cstdint</code> стандартной библиотеки имеются <a href="https://en.cppreference.com/w/cpp/types/integer">целочисленные типы с фиксированным размером</a>:</p>
+
+        <ul>
+            <li>
+                <code>int8_t</code> / <code>uint8_t</code>
+            </li>
+            <li>
+                <code>int16_t</code> / <code>uint16_t</code>
+            </li>
+            <li>
+                <code>int32_t</code> / <code>uint32_t</code>
+            </li>
+            <li>
+                <code>int64_t</code> / <code>uint64_t</code>
+            </li>
+        </ul>
+
+        <p>Число в имени типа означает количество бит, используемых для хранения в памяти. Например, <code>int32_t</code> содержит 32 бита (4 байта) и часто соответствует типу <code>int</code>. Если система не поддерживает какой-то тип, то программа с ним просто не скомпилируется.</p>
+
+        <h2 class="article__heading_l">Переполнение целочисленных типов</h2>
+
+        <p>Стандартные числовые типы имеют ограниченный размер и ограниченное множество допустимых значений. При арифметических операциях над числами таких типов может возникнуть переполнение — ситуация, когда результат операции не помещается в тип:</p>
+
+        <pre class="hscd"><table class="table-code">
+            <tbody>
+                <tr>
+                    <td class="table-code-num">1</td>
+                    <td class="table-code-cont">#include &lt;iostream></td>
+                </tr>
+                <tr>
+                    <td class="table-code-num">2</td>
+                    <td class="table-code-cont"></td>
+                </tr>
+                <tr>
+                    <td class="table-code-num">3</td>
+                    <td class="table-code-cont">int main() {</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num">4</td>
+                    <td class="table-code-cont">    unsigned int a = 123456;  // на 64-битной платформе sizeof(a) == 4</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num">5</td>
+                    <td class="table-code-cont"></td>
+                </tr>
+                <tr>
+                    <td class="table-code-num">6</td>
+                    <td class="table-code-cont">    // Произведение a * a не помещается в 4 байта, так как оно больше 2^32</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num">7</td>
+                    <td class="table-code-cont">    std::cout &lt;< a * a &lt;< "\n";</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num">8</td>
+                    <td class="table-code-cont">}</td>
+                </tr>
+            </tbody>
+        </table></pre>
+
+        <p>В этом примере выражение <code>a * a</code> будет иметь тот же тип, что и аргументы. То, что на самом деле будет вычислено, зависит от знаковости типа.</p>
+
+        <p>Беззнаковые типы можно спокойно переполнять: вычисления будут производиться по модулю соответствующей степени двойки. Другими словами, будут учтены только младшие биты результата:</p>
+
+        <pre class="hscd"><table class="table-code">
+            <tbody>
+                <tr>
+                    <td class="table-code-num ">1</td>
+                    <td class="table-code-cont ">int main() {</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num ">2</td>
+                    <td class="table-code-cont ">    unsigned int x = 0;      // на 64-битной платформе sizeof(x) == 4</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num ">3</td>
+                    <td class="table-code-cont ">    unsigned int y = x - 1;  // 4294967295, то есть 2**32 - 1</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num ">4</td>
+                    <td class="table-code-cont ">    unsigned int z = y + 1;  // 0</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num ">5</td>
+                    <td class="table-code-cont ">}</td>
+                </tr>
+            </tbody>
+        </table></pre>
+
+        <p>Наоборот, для знаковых типов переполнение приводит к так называемому <a href="https://en.cppreference.com/w/cpp/language/ub">неопределённому поведению</a> (UB, undefined behavior).</p>
+
+        <p>Такая ситуация не считается ошибкой компиляции (в самом деле, на стадии компиляции значения переменных могут быть ещё неизвестны). Но в этом случае стандарт С++ перестаёт что-либо гарантировать по поводу поведения программы. Компиляторы могут использовать такие случаи для оптимизации программ, полагаясь на то, что разработчики пишут код корректно и никогда не допускают неопределённого поведения. Далее нам встретятся и другие случаи неопределённого поведения.</p>
+
+        <p><strong>Беззнаковые типы</strong> следует использовать, когда вы имеете дело с битовыми наборами. В остальных случаях предпочтительнее использовать <strong>знаковые типы</strong>.</p>
+
+        <h2 class="article__heading_l">Арифметические операции</h2>
+
+        <p>Бинарные операции <code>+</code>, <code>-</code> и <code>*</code> работают для чисел стандартным образом. Результат операции деления <code>/</code>, применённой к целым числам, всегда округляется в сторону нуля. Таким образом, для положительных чисел операция <code>/</code> возвращает неполное частное. Остаток от деления целых чисел можно получить с помощью операции <code>%</code>.</p>
+
+        <pre class="hscd"><table class="table-code">
+            <tbody>
+                <tr>
+                    <td class="table-code-num ">1</td>
+                    <td class="table-code-cont ">int main() {</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num ">2</td>
+                    <td class="table-code-cont ">    int a = 7, b = 3;</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num ">3</td>
+                    <td class="table-code-cont ">    int q = a / b;  // 2</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num ">4</td>
+                    <td class="table-code-cont ">    int r = a % b;  // 1</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num ">5</td>
+                    <td class="table-code-cont ">}</td>
+                </tr>
+            </tbody>
+        </table></pre>
+
+        <p>Если при делении нужно получить обычное частное, то один из аргументов нужно привести к вещественному типу (например, <code>double</code>) с помощью оператора <code>static_cast</code>:</p>
+
+        <pre class="hscd"><table class="table-code">
+            <tbody>
+                <tr>
+                    <td class="table-code-num ">1</td>
+                    <td class="table-code-cont ">int main() {</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num ">2</td>
+                    <td class="table-code-cont ">    int a = 6, b = 4;</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num ">3</td>
+                    <td class="table-code-cont ">    double q = static_cast&lt;double>(a) / b;  // 1.5</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num ">4</td>
+                    <td class="table-code-cont ">}</td>
+                </tr>
+            </tbody>
+        </table></pre>
+
+        <p>Можно было бы написать чуть более кратко: <code>double q = a * 1.0 / b;</code>. Тогда преобразование аргументов произошло бы неявно.</p>
+
+        <p>Арифметические операции над символами, а также сравнение символов друг с другом — это фактически операции над их ASCII-кодами:</p>
+
+        <pre class="hscd"><table class="table-code">
+            <tbody>
+                <tr>
+                    <td class="table-code-num">1</td>
+                    <td class="table-code-cont">#include &lt;iostream></td>
+                </tr>
+                <tr>
+                    <td class="table-code-num">2</td>
+                    <td class="table-code-cont">    int a = 6, b = 4;</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num">3</td>
+                    <td class="table-code-cont">int main() {</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num">4</td>
+                    <td class="table-code-cont">    char c = 'A';</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num">5</td>
+                    <td class="table-code-cont">    c += 25;  // увеличиваем ASCII-код символа на 25</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num">6</td>
+                    <td class="table-code-cont">    std::cout &lt;< c &lt;< "\n";  // Z</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num">7</td>
+                    <td class="table-code-cont">}</td>
+                </tr>
+            </tbody>
+        </table></pre>
+
+        <figure>
+            <img src="https://yastatic.net/s3/ml-handbook/admin/C_1_869495082d.svg" loading="lazy" decoding="async" alt="Таблица ASCII с шестнадцатеричными кодами символов.">
+                <figcaption>
+                    Таблица ASCII с шестнадцатеричными кодами символов. Слева указана старшая шестнадцатеричная цифра, сверху — младшая. Цветом выделены так называемые управляющие символы, обычно не имеющие графического представления.
+                </figcaption>
+        </figure>
+
+        <p>Операция <code>+</code> применительно к строкам означает конкатенирование (то есть склейку). Это пример <em>перегрузки</em> операции: изначальному оператору сложения чисел в стандартной библиотеке для строки придали новый смысл.</p>
+
+        <pre class="hscd"><table class="table-code">
+            <tbody>
+                <tr>
+                    <td class="table-code-num ">1</td>
+                    <td class="table-code-cont ">#include &lt;string></td>
+                </tr>
+                <tr>
+                    <td class="table-code-num ">2</td>
+                    <td class="table-code-cont "></td>
+                </tr>
+                <tr>
+                    <td class="table-code-num ">3</td>
+                    <td class="table-code-cont ">int main() {</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num ">4</td>
+                    <td class="table-code-cont ">    std::string a = "Hello, ";</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num ">5</td>
+                    <td class="table-code-cont ">    std::string b = "world!";</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num ">6</td>
+                    <td class="table-code-cont ">    std::string c = a + b;  // Hello, world!</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num ">7</td>
+                    <td class="table-code-cont ">}</td>
+                </tr>
+            </tbody>
+        </table></pre>
+
+        <p>Для каждой бинарной операции (например, <code>+</code>) есть версия со знаком равенства (<code>+=</code>) для случая, когда левый аргумент совпадает с переменной, которой присваивается результат:</p>
+
+        <pre class="hscd"><table class="table-code">
+            <tbody>
+                <tr>
+                    <td class="table-code-num ">1</td>
+                    <td class="table-code-cont ">int main() {</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num ">2</td>
+                    <td class="table-code-cont ">    int x = 5;</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num ">3</td>
+                    <td class="table-code-cont ">    x += 3;  // x = x + 3</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num ">4</td>
+                    <td class="table-code-cont ">    x *= x;  // x = x * x</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num ">5</td>
+                    <td class="table-code-cont ">}</td>
+                </tr>
+            </tbody>
+        </table></pre>
+
+        <p>Наконец, имеются операторы <code>++</code> и <code>--</code> для увеличения или уменьшения переменной на единицу. Они бывают префиксные (<code>++x</code>) и постфиксные (<code>x++</code>). Отличие состоит в значении выражения, которое будет вычисляться при применении такого оператора. Мы рассмотрим это позже, а пока привыкнем по умолчанию использовать префиксный оператор для обычных чисел:</p>
+
+        <pre class="hscd"><table class="table-code">
+            <tbody>
+                <tr>
+                    <td class="table-code-num ">1</td>
+                    <td class="table-code-cont ">int main() {</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num ">2</td>
+                    <td class="table-code-cont ">    int x = 5;</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num ">3</td>
+                    <td class="table-code-cont ">    ++x;  // 6</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num ">4</td>
+                    <td class="table-code-cont ">    --x;  // снова 5</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num ">5</td>
+                    <td class="table-code-cont ">}</td>
+                </tr>
+            </tbody>
+        </table></pre>
+
+        <h2 class="article__heading_l">Числа с плавающей точкой</h2>
+
+        <p>В языке C++ существуют три встроенных типа для записи дробных чисел: <code>float</code> (4 байта), <code>double</code> (8 байт) и <code>long double</code> (16 или 8 байт, в зависимости от платформы). В большинстве случаев рекомендуется использовать тип <code>double</code>. Тип <code>float</code> разумно использовать там, где обрабатываются огромные массивы чисел, и возникает необходимость экономить память.</p>
+
+        <p>Как правило, хранение дробных чисел в С++ основано на стандарте <a href="https://en.wikipedia.org/wiki/IEEE_754">IEEE 754</a>. Число представляется в виде двоичной дроби в <a href="https://en.wikipedia.org/wiki/Scientific_notation">экспоненциальной записи</a>: отдельно хранятся бит знака, порядок и <a href="https://en.wikipedia.org/wiki/Significand">мантисса</a>.</p>
+
+        <figure><img src="https://yastatic.net/s3/ml-handbook/admin/C_2_5f62557ba8.svg" loading="lazy" decoding="async" alt=""></figure>
+
+        <p>Такое представление выгодно отличается от чисел с фиксированной точкой, где хранится фиксированное количество разрядов. Оно позволяет, хотя и с разной степенью точности, представлять числа, отличающиеся на порядки.</p>
+
+        <p>При работе с рациональными числами, знаменатель которых не является степенью двойки, неизбежно возникают погрешности представления. В следующем параграфе мы разберём как следует сравнивать такие числа.</p>
+
+        <h2 class="article__heading_l">Автоматический вывод типа</h2>
+
+        <p>Компилятор C++ умеет автоматически выводить тип переменной по значению, которое ей присваивается. Для этого вместо типа надо написать ключевое слово <code>auto</code>:</p>
+
+        <pre class="hscd"><table class="table-code">
+            <tbody>
+                <tr>
+                    <td class="table-code-num ">1</td>
+                    <td class="table-code-cont ">int main() {</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num ">2</td>
+                    <td class="table-code-cont ">    auto x = 42;  // int</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num ">3</td>
+                    <td class="table-code-cont ">    auto x = 42;  // int</td>
+                </tr>
+                <tr>
+                    <td class="table-code-num ">4</td>
+                    <td class="table-code-cont ">}</td>
+                </tr>
+            </tbody>
+        </table></pre>
+
+        <p>Ключевое слово <code>auto</code> позволяет сократить код и не выписывать сложные типы (нам встретятся дальше монстры вроде <code>std::unordered_multimap&lt;Key, Value&gt;::const_iterator</code>). Важно подчеркнуть, что точный тип переменной всё равно становится известен в момент компиляции.</p>
+
+        <p>При использовании <code>auto</code> со строками нужно быть осторожным. Важно знать, что конструкция <code>auto s = "hello"</code> выведет низкоуровневый тип <code>const char *</code> (указатель на неизменяемый набор символов в памяти), а не тип-обёртку <code>std::string</code>.</p>
+
+        <p>Точные правила вывода типов похожи на правила вывода шаблонных параметров, с которыми мы познакомимся в <a href="https://academy.yandex.ru/handbook/cpp/article/templates">параграфе про шаблоны</a>.</p>
+
+        
+
+    </div>
+</div>
+
+<footer>
+    <div>
+        <p class="footer">
+            Авторское право © 2024 ФГБОУ ВО "Новосибирский государственный педагогический университет"
+            Разработка и поддержка сайта – ИФМИТО НГПУ
+        </p>
+    </div>
+</footer>
+</body>
+</html>

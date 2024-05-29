@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Потоковый ввод и вывод</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+<header class="header" id="header">
+    <a th:href="@{/}" class="logo">
+        <img src="/img/logo.png" alt="C++">
+    </a>
+    <div class="links">
+        <a th:href="@{/articles/index}" class="link">Учебные материалы</a>
+        <a th:href="@{/training_module}" class="link">Тренажер</a>
+        <a th:href="@{/about}" class="link">О нас</a>
+    </div>
+</header>
+<div class="article__info">
+    <h1 class="article__heading_xl">
+        <span>1.2</span>
+        Потоковый ввод и вывод
+    </h1>
+    <div class="article__content">
+
+        <p>
+            В этом параграфе мы научимся печатать и считывать с клавиатуры строки и числа.
+        </p>
+
+        <h2 class="article__heading_l">
+            Ввод данных в Compiler Explorer
+        </h2>
+
+        <p>
+            Для ввода данных в диалоговом окне справа следует нажать на кнопку <code>Stdin</code>, после чего откроется окно, куда следует вводить данные, ожидаемые компилятором.
+        </p>
+
+        <img class="article-image-1.1" src="/img/article-2.1.png" alt="Демонстрация окна ввода данных">
+
+        <p>
+            Теперь вы можете передавать компилятору входные данные и таким образом взаимодействовать с программой.
+        </p>
+
+        <h2 class="article__heading_l">
+            Поток
+        </h2>
+
+        <p>
+            Поток — это абстракция для чтения и записи последовательности данных в форматированном виде.
+        </p>
+
+        <p>Записывать данные можно на экран консоли, в файл, буфер в памяти или в строку. Считывать их можно с клавиатуры, из файла, из памяти. Причём с каждым таким «устройством» можно связать свой поток.</p>
+
+        <p>Важно, что потоки не просто пересылают байты памяти, а применяют форматированный человекочитаемый ввод-вывод. Например, числа печатаются и считываются в десятичной нотации, хотя в памяти компьютера они хранятся в двоичном виде.</p>
+
+        <p>В программе <code>Hello, world!</code> нам уже встречался поток вывода <code>std::cout</code>, по умолчанию связанный с экраном консоли. Познакомимся с потоком ввода <code>std::cin</code>, связанным с клавиатурой. Для его использования нужен тот же заголовочный файл <code>iostream</code>.</p>
+
+        <p>Рассмотрим программу, которая спрашивает имя пользователя и печатает персональное приветствие:</p>
+
+        <pre class="hscd"><table class="table-code">
+                <tbody>
+                    <tr>
+                        <td class="table-code-num">1</td>
+                        <td class="table-code-cont">#include &lt;iostream></td>
+                    </tr>
+                    <tr>
+                        <td class="table-code-num">2</td>
+                        <td class="table-code-cont">#include &lt;string></td>
+                    </tr>
+                    <tr>
+                        <td class="table-code-num">3</td>
+                        <td class="table-code-cont"></td>
+                    </tr>
+                    <tr>
+                        <td class="table-code-num">4</td>
+                        <td class="table-code-cont">int main() {</td>
+                    </tr>
+                    <tr>
+                        <td class="table-code-num">5</td>
+                        <td class="table-code-cont" >    std::string name;  // объявляем переменную name</td>
+                    </tr>
+                    <tr>
+                        <td class="table-code-num">6</td>
+                        <td class="table-code-cont" th:inline="text">    std::cout << "What is your name?\n";</td>
+                    </tr>
+                    <tr>
+                        <td class="table-code-num">7</td>
+                        <td class="table-code-cont" th:inline="text">    std::cin >> name;  // считываем её значение с клавиатуры</td>
+                    </tr>
+                    <tr>
+                        <td class="table-code-num">8</td>
+                        <td class="table-code-cont">    std::cout &lt;< "Hello, " &lt;< name &lt;< "!\n";</td>
+                    </tr>
+                    <tr>
+                        <td class="table-code-num">9</td>
+                        <td class="table-code-cont">}</td>
+                    </tr>
+                </tbody>
+            </table></pre>
+
+        <p>Обратите внимание на направление угловых скобок в этом примере — они условно показывают направление потока данных. При печати данные выводятся на экран, и стрелки направлены от текста к <code>cout</code>. При вводе данные поступают с клавиатуры, и стрелки направлены от <code>cin</code> к переменной.</p>
+
+        <p>В нашем примере в переменную <code>name</code> считается одно слово, которое будет выведено в ответном сообщении. Пример работы программы:</p>
+
+        <pre class="hscd-error">What is your name?
+Sergey
+Hello, Sergey!
+</pre>
+        <p>Однако если ввести строку из нескольких слов с пробелами, то в <code>name</code> запишется только первое слово:</p>
+
+        <pre class="hscd-error">What is your name?
+Sergey Sergeev
+Hello, Sergey!
+</pre>
+        <p>Дело в том, что <code>cin</code> читает поток данных до ближайшего пробельного разделителя (пробела, табуляции, перевода строки или просто конца файла). Чтобы считать в строковую переменную всю строчку целиком (не включая завершающий символ перевода строки), нужно использовать функцию <a href="https://en.cppreference.com/w/cpp/string/basic_string/getline"><code>std::getline</code></a> из заголовочного файла <code>string</code>:</p>
+
+        <pre class="hscd"><table class="table-code">
+                <tbody>
+                    <tr>
+                        <td class="table-code-num ">1</td>
+                        <td class="table-code-cont ">#include &lt;iostream></td>
+                    </tr>
+                    <tr>
+                        <td class="table-code-num ">2</td>
+                        <td class="table-code-cont ">#include &lt;string></td>
+                    </tr>
+                    <tr>
+                        <td class="table-code-num ">3</td>
+                        <td class="table-code-cont "></td>
+                    </tr>
+                    <tr>
+                        <td class="table-code-num ">4</td>
+                        <td class="table-code-cont ">int main() {</td>
+                    </tr>
+                    <tr>
+                        <td class="table-code-num ">5</td>
+                        <td class="table-code-cont ">    std::string name;</td>
+                    </tr>
+                    <tr>
+                        <td class="table-code-num ">6</td>
+                        <td class="table-code-cont ">    std::getline(std::cin, name);</td>
+                    </tr>
+                    <tr>
+                        <td class="table-code-num ">7</td>
+                        <td class="table-code-cont ">    std::cout &lt;< "Hello, " &lt;< name &lt;< "!\n";</td>
+                    </tr>
+                    <tr>
+                        <td class="table-code-num ">8</td>
+                        <td class="table-code-cont ">}</td>
+                    </tr>
+                </tbody>
+            </table></pre>
+
+        <p>Программа вернет нам:</p>
+
+        <pre class="hscd-error">
+Program returned: 0
+Program stdout
+
+Hello, Sergey Sergeev!</pre>
+
+        <p>В этом примере мы печатаем в одном выражении друг за другом несколько строк (<code>"Hello, "</code>, <code>name</code> и <code>"!\n"</code>), разделённых угловыми скобками <code>&lt;&lt;</code>. Таким образом, <code>cin</code> и <code>cout</code> позволяют кратко считывать и печатать несколько объектов одной командой.</p>
+
+        <p>Например, считывание нескольких чисел целого типа, набранных через пробельные разделители, может выглядеть так:</p>
+
+        <pre class="hscd"><table class="table-code">
+                <tbody>
+                    <tr>
+                        <td class="table-code-num ">1</td>
+                        <td class="table-code-cont ">#include &lt;iostream></td>
+                    </tr>
+                    <tr>
+                        <td class="table-code-num ">2</td>
+                        <td class="table-code-cont "></td>
+                    </tr>
+                    <tr>
+                        <td class="table-code-num ">3</td>
+                        <td class="table-code-cont ">int main() {</td>
+                    </tr>
+                    <tr>
+                        <td class="table-code-num ">4</td>
+                        <td class="table-code-cont ">    int a;</td>
+                    </tr>
+                    <tr>
+                        <td class="table-code-num ">5</td>
+                        <td class="table-code-cont ">    int b;</td>
+                    </tr>
+                    <tr>
+                        <td class="table-code-num ">6</td>
+                        <td class="table-code-cont ">    int c;</td>
+                    </tr>
+                    <tr>
+                        <td class="table-code-num ">7</td>
+                        <td class="table-code-cont ">    std::cin >> a >> b >> c;</td>
+                    </tr>
+                    <tr>
+                        <td class="table-code-num ">8</td>
+                        <td class="table-code-cont ">}</td>
+                    </tr>
+                </tbody>
+            </table></pre>
+
+        <p>Напечатать их значения можно следующим образом:</p>
+
+        <pre class="hscd"><table class="table-code">
+                <tbody>
+                    <tr>
+                        <td class="table-code-num ">1</td>
+                        <td class="table-code-cont ">std::cout &lt;< a &lt;< " " &lt;< b &lt;< " " &lt;< c &lt;< "\n";</td>
+                    </tr>
+                </tbody>
+            </table></pre>
+
+        <p>Обратите внимание, что мы дополнительно вставляем между ними пробелы, чтобы в выводе числа не слиплись вместе. В конце вывода мы вставляем символ перевода строки <code>\n</code>, чтобы отделить этот результат от последующего вывода или от сообщений командной строки.</p>
+
+
+
+</div>
+</div>
+<footer>
+    <div class="footer">
+        <p class="footer-cont">
+            Авторское право © 2024 ФГБОУ ВО "Новосибирский государственный педагогический университет"
+            Разработка и поддержка сайта – ИФМИТО НГПУ
+        </p>
+    </div>
+</footer>
+</body>
+</html>

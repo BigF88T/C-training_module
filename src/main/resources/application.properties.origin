@@ -1,0 +1,8 @@
+spring.application.name=BackEnd
+spring.datasource.driver-class-name=*your driver*
+spring.datasource.url=jdbc:postgresql://*your localhost*/*your db*
+spring.datasource.username=*username*
+spring.datasource.password=*password*
+
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.properties.hibernate.show_sql=true

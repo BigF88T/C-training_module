@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+  <header class="header" id="header">
+      <a th:href="@{/}" class="logo">
+          <img src="/img/logo.png" alt="C++">
+      </a>
+      <div class="links">
+          <a th:href="@{/articles/index}" class="link">Учебные материалы</a>
+          <a th:href="@{/training_module}" class="link">Тренажер</a>
+          <a th:href="@{/about}" class="link">О нас</a>
+      </div>
+  </header>
+  <div class="index__info">
+  <h1 class="article__heading_xl">Основы C++ </h1>
+  <p>Язык C++ появился в начала 1980-х годов, но он по-прежнему актуален и востребован. Сегодня он применяется при разработке великого множества разных типов программ  — от десктопных приложений и операционных систем до компьютерных игр и нейростей. С помощью данных статей вы сможете самостоятельно изучить базовые концепции C++. Данный курс рассчитан на учеников 10-11 и подразумевает, что вы знакомы с основами информатики и владеете каким-либо языком программирования на уровне школьной программы — например, языком Python.</p>
+  </div>
+      <!-- main -->
+  <main>
+    <section class="section-faq" id="section-faq" style="position: relative;">
+      <div class="container" style="position: relative; z-index: 1;">
+        <div class="faq-wrapper">
+          <div class="faq-item faq-1">
+            <button class="faq-item-text">
+              <div class="faq-item-click">
+                <p class="faq-item_question">Первые шаги</p>
+                <div class="faq-item-btn">
+                  <div></div>
+                  <div></div>
+                </div>
+              </div>
+            </button>
+            <!-- сюда ссылка -->
+            </p>
+            <!-- сюда ссылка -->
+          </div>
+          <div class="open-1">
+            <ul>
+              <li><a th:href="@{/articles/article-1}">Первая программа</a></li>
+              <li><a th:href="@{/articles/article-2}">Потоковый ввод и вывод</a></li>
+              <li><a th:href="@{/articles/article-3}">Типы данных</a></li>
+              <li><a th:href="@{/articles/article-4}">Ветвления и циклы</a></li>
+              <li><a th:href="@{/articles/article-5}">Enumerations</a></li>
+              <li><a th:href="@{/articles/article-6}">Control Flow (Basics)</a></li>
+              <li><a th:href="@{/articles/article-7}">Type System Basics</a></li>
+              <li><a th:href="@{/articles/article-8}">Functions (Basics)</a></li>
+              <li><a th:href="@{/articles/article-9}">Memory (Basics)</a></li>
+            </ul>
+          </div>
+          <div class="faq-item faq-2">
+            <button class="faq-item-text">
+              <div class="faq-item-click">
+                <p class="faq-item_question">Input & Output</p>
+                <div class="faq-item-btn">
+                  <div></div>
+                  <div></div>
+                </div>
+              </div>
+            </button>
+            <!-- сюда ссылка -->
+            </p>
+            <!-- сюда ссылка -->
+          </div>
+          <div class="open-2">
+            <ul>
+              <li><a href="">Ссылка</a></li>
+            </ul>
+          </div>
+          <div class="faq-item faq-3">
+            <button class="faq-item-text">
+              <div class="faq-item-click">
+                <p class="faq-item_question">Custom Types – Part 1 </p>
+                <div class="faq-item-btn">
+                  <div></div>
+                  <div></div>
+                </div>
+              </div>
+            </button>
+            <!-- сюда ссылка -->
+            </p>
+            <!-- сюда ссылка -->
+          </div>
+          <div class="open-3">
+            <ul>
+              <li><a href="">Ссылка</a></li>
+            </ul>
+          </div>
+          <div class="faq-item faq-4">
+            <button class="faq-item-text">
+              <div class="faq-item-click">
+                <p class="faq-item_question">Standard Library – Part 1 </p>
+                <div class="faq-item-btn">
+                  <div></div>
+                  <div></div>
+                </div>
+              </div>
+            </button>
+            <!-- сюда ссылка -->
+            </p>
+            <!-- сюда ссылка -->
+          </div>
+          <div class="open-4">
+            <ul>
+                <li><a th:href="@{/articles/article-}">Iterators</a></li>
+                <li><a th:href="@{/articles/article-}">Sequence Containers</a></li>
+                <li><a th:href="@{/articles/article-}">Standard Library Sequence Views</a></li>
+                <li><a th:href="@{/articles/article-}">Associative Containers (maps, sets, …)</a></li>
+                <li><a th:href="@{/articles/article-}">Standard Algorithms Introduction</a></li>
+                <li><a th:href="@{/articles/article-}">Container Traversal</a></li>
+                <li><a th:href="@{/articles/article-}">Minimum & Maximum (min_element, …)</a></li>
+                <li><a th:href="@{/articles/article-}">Existence Queries (any_of, count, …)</a></li>
+                <li><a th:href="@{/articles/article-}">Finding Elements (find, find_if, …)</a></li>
+                <li><a th:href="@{/articles/article-}">Comparing Ranges (equal, mismatch, …)</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <footer>
+      <div class="footer">
+          <p class="footer-cont">
+              Авторское право © 2024 ФГБОУ ВО "Новосибирский государственный педагогический университет"
+              Разработка и поддержка сайта – ИФМИТО НГПУ
+          </p>
+      </div>
+  </footer>
+</body>
+<script src="/js/main.js"></script>
+
+</html>

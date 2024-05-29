@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+<header class="header" id="header">
+    <a th:href="@{/}" class="logo">
+        <img src="/img/logo.png" alt="C++">
+    </a>
+    <div class="links">
+        <a th:href="@{/articles/index}" class="link">Учебные материалы</a>
+        <a th:href="@{/training_module}" class="link">Тренажер</a>
+        <a href="#" class="link">О нас</a>
+    </div>
+</header>
+
+<form name="f" action="/process_login" method="post">
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"> <!-- Скрытая интеграция csrf-токена  -->
+
+    <fieldset>
+        <legend>Введите имя пользователя: </legend>
+        <label for="username">Имя</label>
+        <input type="text" id="username" name="username"/>
+        <br/>
+        <label for="password">Пароль</label>
+        <input type="password" id="password" name="password"/>
+        <br/>
+        <div class="form-actions">
+            <button type="submit" class="btn">Войти</button>
+        </div>
+        <div th:if="${param.error}" style="border: 2px solid black; color: red; padding: 10px">
+            Неверные имя пользователя или пароль
+        </div>
+    </fieldset>
+</form>
+<form action="/auth/registration">
+    <input type="submit" value="Регистрация"/>
+</form>
+
+<footer>
+    <div>
+        <p class="footer">
+            Авторское право © 2024 ФГБОУ ВО "Новосибирский государственный педагогический университет"
+            Разработка и поддержка сайта – ИФМИТО НГПУ
+        </p>
+    </div>
+</footer>
+</body>
+</html>
