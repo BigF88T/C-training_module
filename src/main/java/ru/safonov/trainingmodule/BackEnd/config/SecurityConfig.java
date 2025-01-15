@@ -31,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/admin").hasRole("ADMIN") // Предоставлять доступ к странице /admin только пользователям с ролью администратор
-                .antMatchers("/auth/login", "/auth/registration", "/error","/css/main.css", "/img/logo.png").permitAll() // Обработка доступа к страницам неаутентифицированных пользователей
+                .antMatchers("/auth/login", "/auth/registration", "/error","/css/main.css", "/img/logo.png", "/article").permitAll() // Обработка доступа к страницам неаутентифицированных пользователей
                 .anyRequest().hasAnyRole("USER", "ADMIN") // Предоставление доступа ко всем остальным страницам с ролями: пользователь и администратор
                 .and()
                 .formLogin().loginPage("/auth/login") // Изменение дефолтной страницы login`а

@@ -446,7 +446,63 @@ iframe {
 .index__info h1 {
     font-size: 40px;
 }
-
+.login-form {
+    font-family: "Montserrat", "Arial", sans-serif;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: nowrap;
+    width: 190px;
+    margin-left: 43.7%;
+    height: 43.2em;
+}
+.login-form form input {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background-color: rgba(255,255,255,.0);
+    font-family: "Montserrat", "Arial", sans-serif;
+    font-size: 16px;
+}
+.login-error {
+    color: #ff6060;
+    padding-bottom: 10px
+}
+.reg-button{
+    transition: all 0.2s ease;
+}
+input.reg-button:hover{
+    color: #a8a8a8;
+    transition: all 0.3s ease;
+}
+input#username, input#password{
+    padding: 2px 5px;
+}
+.login-form form fieldset {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 10px;
+}
+.login-form form fieldset legend {
+    padding: 0;
+    margin: 0;
+    margin-bottom: 10px;
+}
+.login-form form fieldset input {
+    margin-bottom: 8px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid black;
+    border-radius: 6px;
+}
+.form-actions button.btn{
+    transition: all 0.2s ease;
+}
+.form-actions button.btn:hover{
+    color: #a8a8a8;
+    transition: all 0.3s ease;
+}
 @media (min-width: 1280px) {
     :root {
         --width-page-content: 900px;
